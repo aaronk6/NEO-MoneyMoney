@@ -1,5 +1,5 @@
-# NEO-MoneyMoney
-Fetches amount and value of privately held NEO address via blockexplorer and returns it as a security.  
+# NEO-MoneyMoney (Antshares)
+Fetches amount and value of privately held NEO (Antshares) address via blockexplorer and returns it as a security.  
 This can be also be used to track your cold storage.
 
 ![MoneyMoney screenshot with NEO Balance](screens/neo-balance.png)
