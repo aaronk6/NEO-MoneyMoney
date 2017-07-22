@@ -2,7 +2,7 @@
 Fetches amount and value of privately held NEO address via blockexplorer and returns it as a security.  
 This can be also be used to track your cold storage.
 
-![MoneyMoney screenshot with NEO Balance](Screens/neo-balance.png)
+![MoneyMoney screenshot with NEO Balance](screens/neo-balance.png)
 
 ## Extension Setup
 
@@ -22,6 +22,6 @@ Add a new account (type "NEO").
 **Use your NEO adresses coma seperated as user name**  
 `AQVh2pG732YvtNaxEGkQUei3YA4cvo7d2i, AQVh2pG732YvtNaxEGkQUei3YA4cvo7d2i` (example)
 
-**User whatever you want as password**  
+**Use whatever you want as password**  
 `123` (example)
 
