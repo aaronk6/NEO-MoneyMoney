@@ -102,7 +102,7 @@ end
 -- Helper Functions
 function cryptocompareRequestUrl()
   -- TODO: Chance antshares to NEO when API changes
-  return "https://api.coinmarketcap.com/v1/ticker/antshares/?convert=EUR"
+  return "https://api.coinmarketcap.com/v1/ticker/neo/?convert=EUR"
 end 
 
 function neoRequestUrl(neoAddress)
