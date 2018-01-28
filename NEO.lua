@@ -8,7 +8,7 @@
 
 -- MIT License
 
--- Copyright (c) 2017 Jacubeit
+-- Copyright (c) 2018 Jacubeit
 
 -- Permission is hereby granted, free of charge, to any person obtaining a copy
 -- of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@
 
 
 WebBanking{
-  version = 0.1,
+  version = 0.2,
   description = "Include your NEO coins as cryptoportfolio in MoneyMoney by providing a NEO address (usernme, comma seperated) and a random Password",
   services= { "NEO" }
 }
@@ -62,16 +62,33 @@ end
 function RefreshAccount (account, since)
   local s = {}
   prices = requestNeoPrice()
+  GasPrices = requestGasPrice()
 
   for address in string.gmatch(neoAddress, '([^,]+)') do
-    neoQuantity = requestNeoQuantityForNeoAddress(address)
+    neoAndGasQuantity = requestNeoAndGasQuantityForNeoAddress(address)
 
     s[#s+1] = {
       name = address,
       currency = nil,
       market = "cryptocompare",
-      quantity = neoQuantity,
+      quantity = neoAndGasQuantity:dictionary()["balance"][2]["amount"],
       price = prices["price_eur"],
+    }
+
+    s[#s+1] = {
+      name = "GAS @ " .. address,
+      currency = nil,
+      market = "cryptocompare",
+      quantity = neoAndGasQuantity:dictionary()["balance"][1]["amount"],
+      price = GasPrices["price_eur"],
+    }
+
+    s[#s+1] = {
+      name = "GAS Unclaimed @ " .. address,
+      currency = nil,
+      market = "cryptocompare",
+      quantity = neoAndGasQuantity:dictionary()["unclaimed"],
+      price = GasPrices["price_eur"],
     }
   end
 
@@ -90,23 +107,33 @@ function requestNeoPrice()
   return json:dictionary()[1]
 end
 
-function requestNeoQuantityForNeoAddress(neoAddress)
+function requestGasPrice()
+  content = connection:request("GET", cryptocompareGasRequestUrl(), {})
+  json = JSON(content)
+
+  return json:dictionary()[1]
+end
+
+
+function requestNeoAndGasQuantityForNeoAddress(neoAddress)
   content = connection:request("GET", neoRequestUrl(neoAddress), {})
   json = JSON(content)
-  result = json:dictionary()["balances"][1]["valid"]
   
-  return result
+  return json
 end
 
 
 -- Helper Functions
 function cryptocompareRequestUrl()
-  -- TODO: Chance antshares to NEO when API changes
   return "https://api.coinmarketcap.com/v1/ticker/neo/?convert=EUR"
 end 
 
+function cryptocompareGasRequestUrl()
+  return "https://api.coinmarketcap.com/v1/ticker/gas/?convert=EUR"
+end 
+
 function neoRequestUrl(neoAddress)
-  neoChain = "https://otcgo.cn/api/v1/balances/"
+  neoChain = "https://neoscan.io//api/main_net/v1/get_address/"
 
   return neoChain .. neoAddress
 end
