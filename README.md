@@ -1,5 +1,6 @@
-# NEO-MoneyMoney (Antshares)
-Fetches amount and value of privately held NEO (Antshares) address via blockexplorer and returns it as a security.  
+# NEO-MoneyMoney
+
+Fetches amount and value of privately held NEO address via neoscan.io and CoinGecko and returns it as a security.  
 This can be also be used to track your cold storage.
 
 ![MoneyMoney screenshot with NEO Balance](Screens/neo-balance.png)
@@ -8,20 +9,18 @@ This can be also be used to track your cold storage.
 
 You can get a signed version of this extension from
 
-* my [GitHub releases page](https://github.com/Jacubeit/NEO-MoneyMoney/releases/tag/v0.1), or
+* my [GitHub releases page](https://github.com/aaronk6/NEO-MoneyMoney/releases/tag/v1.0), or
 * the [MoneyMoney Extensions](https://moneymoney-app.com/extensions/) page
 
 Once downloaded, move `NEO.lua` to your MoneyMoney Extensions folder.
 
-**Note:** This extension requires MoneyMoney **Version 2.2.19** or newer.
-
 ## MoneyMoney Setup
 
-Add a new account (type "NEO"). 
+* Add a new account (type "NEO"). 
+* Enter one or more NEO addresses.
 
-**Use your NEO adresses coma seperated as user name**  
-`AQVh2pG732YvtNaxEGkQUei3YA4cvo7d2i, AQVh2pG732YvtNaxEGkQUei3YA4cvo7d2i` (example)
+Example:
 
-**Use whatever you want as password**  
-`123` (example)
-
+```
+AQVh2pG732YvtNaxEGkQUei3YA4cvo7d2i, AQVh2pG732YvtNaxEGkQUei3YA4cvo7d2i
+```
