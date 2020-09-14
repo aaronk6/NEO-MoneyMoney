@@ -30,7 +30,7 @@
 
 
 WebBanking{
-  version = 0.1,
+  version = 1.00,
   description = "Include your NEO coins as cryptoportfolio in MoneyMoney by providing a NEO address (usernme, comma seperated) and a random Password",
   services= { "NEO" }
 }
